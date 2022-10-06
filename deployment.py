@@ -1874,7 +1874,7 @@ if option == 'Product_ID: 11990782':
 if option == 'Product_ID: 12062063':
     st.title('Product_ID: 12062063')
     
-    loaded_model_prom  = joblib.load('Modelss/model_12062063.pkl') 
+    loaded_model_prom  = joblib.load('Modelss/model_regular_12062063.pkl') 
     loaded_model = joblib.load('Modelss/model_promo_12062063.pkl') 
     
     Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
