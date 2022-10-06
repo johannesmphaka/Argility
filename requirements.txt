@@ -2,3 +2,4 @@ mlflow
 streamlit
 sklearn
 bokeh
+joblib
