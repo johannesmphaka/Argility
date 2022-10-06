@@ -1,4 +1,4 @@
-#from cgi import print_exception
+from cgi import print_exception
 import streamlit as st
 import pandas as pd
 # from streamlit_option_menu import option_menu
@@ -14,6 +14,7 @@ import datetime as dt
 import streamlit.components.v1 as components
 from bokeh.models import BoxAnnotation, Span
 from bokeh.models import Slope
+import joblib
 
 
 import mlflow
@@ -21,6 +22,8 @@ import mlflow
 mlflow.set_tracking_uri("http://127.0.0.1:5000") 
 
 st.set_page_config(layout="wide")
+
+
 
 
 
@@ -47,12 +50,18 @@ with st.sidebar:
 
 if option == 'Product_ID: 62875832':
     st.title('Product_ID: 62875832')
+   
+    loaded_model_prom  = joblib.load('Modelss/model_regular_62875832.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_62875832.pkl') 
     
-    logged_model = 'runs:/342e7ffc84aa463d846496540df19fbe/models'
-    loaded_model_prom = 'runs:/5083640dbb944271a5f1444bf9d180ec/models'
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    # loaded_model = mlflow.pyfunc.load_model(logged_model)
+    
+    
+    
+    
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -96,7 +105,7 @@ if option == 'Product_ID: 62875832':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
 
 
     
@@ -111,7 +120,7 @@ if option == 'Product_ID: 62875832':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -219,7 +228,7 @@ if option == 'Product_ID: 62875832':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -320,8 +329,8 @@ if option == 'Product_ID: 62875832':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
@@ -352,11 +361,11 @@ if option == 'Product_ID: 62875832':
 if option == 'Product_ID: 84630314':
     st.title('Product_ID: 84630314')
     
-    logged_model = 'runs:/8f1f8d236ae4405fb4cd71b9c24f39d9/models'
-    loaded_model_prom = 'runs:/cf69f39383fb43bcba8c3c0b325fe63a/models'
+    loaded_model_prom  = joblib.load('Modelss/model_regular_84630314.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_84630314.pkl') 
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -400,9 +409,11 @@ if option == 'Product_ID: 84630314':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
 
 
+
+    
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -414,7 +425,7 @@ if option == 'Product_ID: 84630314':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -522,7 +533,7 @@ if option == 'Product_ID: 84630314':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -623,8 +634,8 @@ if option == 'Product_ID: 84630314':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
@@ -654,11 +665,11 @@ if option == 'Product_ID: 84630314':
 if option == 'Product_ID: 95208654':
     st.title('Product_ID: 95208654')
     
-    logged_model = 'runs:/24cc75bd97b444ea98cfff9489fb57a0/models'
-    loaded_model_prom = 'runs:/4b1b2b599fca47ae95c929adadfb13b9/models'
+    loaded_model_prom  = joblib.load('Modelss/model_regular_95208654.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_95208654.pkl') 
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -693,7 +704,6 @@ if option == 'Product_ID: 95208654':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        
         st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
     
         st.write('**Please note that all the products can be interpreted in an similar manner**')
@@ -703,9 +713,11 @@ if option == 'Product_ID: 95208654':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
 
 
+
+    
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -717,7 +729,7 @@ if option == 'Product_ID: 95208654':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -825,7 +837,7 @@ if option == 'Product_ID: 95208654':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -926,8 +938,8 @@ if option == 'Product_ID: 95208654':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
@@ -956,11 +968,11 @@ if option == 'Product_ID: 95208654':
 if option == 'Product_ID: 111708109':
     st.title('Product_ID: 111708109')
     
-    logged_model = 'runs:/964b58f457b44add9a9f7c42888f24b9/models'
-    loaded_model_prom = 'runs:/d01e6e5f7de04fc296776fc7b33f120e/models'
+    loaded_model_prom  = joblib.load('Modelss/model_regular_111708109.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_111708109.pkl') 
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -995,7 +1007,6 @@ if option == 'Product_ID: 111708109':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        
         st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
     
         st.write('**Please note that all the products can be interpreted in an similar manner**')
@@ -1005,7 +1016,7 @@ if option == 'Product_ID: 111708109':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
 
 
     col1, col2, col3 = st.columns(3)
@@ -1019,7 +1030,7 @@ if option == 'Product_ID: 111708109':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -1127,7 +1138,7 @@ if option == 'Product_ID: 111708109':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -1228,8 +1239,8 @@ if option == 'Product_ID: 111708109':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
@@ -1258,11 +1269,11 @@ if option == 'Product_ID: 111708109':
 if option == 'Product_ID: 73267284':
     st.title('Product_ID: 73267284')
     
-    logged_model = 'runs:/90d2f9efbc284bf9a3c7c9da39049b22/models'
-    loaded_model_prom = 'runs:/17a556688ad84c7eafca22000420e49f/models'
+    loaded_model_prom  = joblib.load('Modelss/model_regular_73267284.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_73267284.pkl') 
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -1306,10 +1317,10 @@ if option == 'Product_ID: 73267284':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
 
 
-    
+
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -1321,7 +1332,7 @@ if option == 'Product_ID: 73267284':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -1429,7 +1440,7 @@ if option == 'Product_ID: 73267284':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -1530,8 +1541,8 @@ if option == 'Product_ID: 73267284':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
@@ -1560,11 +1571,11 @@ if option == 'Product_ID: 73267284':
 if option == 'Product_ID: 11990782':
     st.title('Product_ID: 11990782')
     
-    logged_model = 'runs:/1d584efe851c43078f39c8854de0e1cb/models'
-    loaded_model_prom = 'runs:/3e37191f824947cd91bec5defc7c9695/models'
+    loaded_model_prom  = joblib.load('Modelss/model_regular_11990782.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_11990782.pkl') 
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -1608,7 +1619,8 @@ if option == 'Product_ID: 11990782':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
+
 
 
     col1, col2, col3 = st.columns(3)
@@ -1622,7 +1634,7 @@ if option == 'Product_ID: 11990782':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -1730,7 +1742,7 @@ if option == 'Product_ID: 11990782':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -1831,8 +1843,8 @@ if option == 'Product_ID: 11990782':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
@@ -1862,11 +1874,11 @@ if option == 'Product_ID: 11990782':
 if option == 'Product_ID: 12062063':
     st.title('Product_ID: 12062063')
     
-    logged_model = 'runs:/403a0b2709fb47cf8a694347c32cd1c3/models'
-    loaded_model_prom = 'runs:/58077075f3a34663b627f753605686d8/models'
+    loaded_model_prom  = joblib.load('Modelss/model_12062063.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_12062063.pkl') 
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -1910,7 +1922,9 @@ if option == 'Product_ID: 12062063':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
+
+
 
 
     col1, col2, col3 = st.columns(3)
@@ -1924,7 +1938,7 @@ if option == 'Product_ID: 12062063':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -2032,7 +2046,7 @@ if option == 'Product_ID: 12062063':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -2133,8 +2147,8 @@ if option == 'Product_ID: 12062063':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
@@ -2163,11 +2177,11 @@ if option == 'Product_ID: 12062063':
 if option == 'Product_ID: 130680236':
     st.title('Product_ID: 130680236')
     
-    logged_model = 'runs:/4c345cd11d744e38b1d7c0a2facdacf5/models'
-    loaded_model_prom = 'runs:/9d3bbdd813024ffab2caf69f2ad29fca/models'
+    loaded_model_prom  = joblib.load('Modelss/model_regular_130680236.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_130680236.pkl') 
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -2211,10 +2225,10 @@ if option == 'Product_ID: 130680236':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
 
 
-    
+
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -2226,7 +2240,7 @@ if option == 'Product_ID: 130680236':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -2334,7 +2348,7 @@ if option == 'Product_ID: 130680236':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -2435,8 +2449,8 @@ if option == 'Product_ID: 130680236':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
@@ -2466,11 +2480,11 @@ if option == 'Product_ID: 130680236':
 if option == 'Product_ID: 137353695':
     st.title('Product_ID: 137353695')
     
-    logged_model = 'runs:/e666203383b64656bb23dad464e8ba6b/models'
-    loaded_model_prom = 'runs:/693493edd1a8427a93cda78b6cfd69fb/models'
+    loaded_model_prom  = joblib.load('Modelss/model_regular_137353695.pkl') 
+    loaded_model = joblib.load('Modelss/model_promo_137353695.pkl') 
     
-    Price_Elasticity_regular = np.round(mlflow.sklearn.load_model(logged_model).coef_[0], 2)
-    Price_Elasticity_promo = np.round(mlflow.sklearn.load_model(loaded_model_prom).coef_[0], 2)
+    Price_Elasticity_regular = np.round(loaded_model.coef_[0], 2)
+    Price_Elasticity_promo = np.round(loaded_model_prom.coef_[0], 2)
     
     st.subheader(f'Price Elasticity for regular price: {Price_Elasticity_regular}')
     st.subheader(f'Price Elasticity for promo price: {Price_Elasticity_promo}')
@@ -2514,7 +2528,7 @@ if option == 'Product_ID: 137353695':
 
         st.write('**Elasticities interpretation**')
         
-        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 172.8% or a 10% price increase in Product ID: 62875832, it decreases sales demand by 172.8%')
 
 
     col1, col2, col3 = st.columns(3)
@@ -2528,7 +2542,7 @@ if option == 'Product_ID: 137353695':
         
         
       #####$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
         
         current_price = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
         current_price['PRICE'] = [pr]
@@ -2636,7 +2650,7 @@ if option == 'Product_ID: 137353695':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         # Load model as a PyFuncModel.
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        # loaded_model = mlflow.pyfunc.load_model(logged_model)
 
     
         test = pd.DataFrame(columns= [ "PRICE", "QUANTITY"])
@@ -2737,8 +2751,8 @@ if option == 'Product_ID: 137353695':
         # logged_model = 'runs:/a4e3a4228f674dcb865f949651c47bc2/models'
 
         
-        slope = mlflow.sklearn.load_model(logged_model).coef_[0]
-        intercept = mlflow.sklearn.load_model(logged_model).intercept_
+        slope = loaded_model.coef_[0]
+        intercept = loaded_model.intercept_
 
         # Make the regression line
         regression_line = Slope(gradient=slope, y_intercept=intercept, line_color="red")
