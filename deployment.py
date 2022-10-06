@@ -1894,7 +1894,7 @@ if option == 'Product_ID: 12062063':
     
     
     # product_ = pd.read_csv('Senior Data Assignment.csv')
-    product_ = df_regular[df_regular['sku_cde']==111708109]
+    product_ = df_regular[df_regular['sku_cde']==12062063]
     product_['date_week'] = pd.to_datetime(product_['date_week'])
     # product_['year'] = pd.to_datetime(product_['date_week']).dt.year
     
