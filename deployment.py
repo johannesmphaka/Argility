@@ -93,6 +93,12 @@ if option == 'Product_ID: 62875832':
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
 
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
+
     
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
@@ -385,11 +391,18 @@ if option == 'Product_ID: 84630314':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        st.write('Here we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+        st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+    
+        st.write('**Please note that all the products can be interpreted in an similar manner**')
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
 
-    
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
+
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -680,11 +693,19 @@ if option == 'Product_ID: 95208654':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        st.write('Here we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+        
+        st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+    
+        st.write('**Please note that all the products can be interpreted in an similar manner**')
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
 
-    
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
+
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -974,11 +995,19 @@ if option == 'Product_ID: 111708109':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        st.write('Here we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+        
+        st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+    
+        st.write('**Please note that all the products can be interpreted in an similar manner**')
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
 
-    
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
+
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -1268,9 +1297,17 @@ if option == 'Product_ID: 73267284':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        st.write('Here we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+        st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+    
+        st.write('**Please note that all the products can be interpreted in an similar manner**')
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
+
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
 
     
     col1, col2, col3 = st.columns(3)
@@ -1562,11 +1599,18 @@ if option == 'Product_ID: 11990782':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        st.write('Here we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+        st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+    
+        st.write('**Please note that all the products can be interpreted in an similar manner**')
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
 
-    
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
+
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -1857,11 +1901,18 @@ if option == 'Product_ID: 12062063':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        st.write('Here we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+        st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+    
+        st.write('**Please note that all the products can be interpreted in an similar manner**')
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
 
-    
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
+
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
@@ -2151,9 +2202,17 @@ if option == 'Product_ID: 130680236':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        st.write('Here we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+        st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+    
+        st.write('**Please note that all the products can be interpreted in an similar manner**')
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
+
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
 
     
     col1, col2, col3 = st.columns(3)
@@ -2446,11 +2505,18 @@ if option == 'Product_ID: 137353695':
     with st.sidebar:
         
         pr = st.sidebar.slider('Choose price', minn, maxx+1, mid)
-        st.write('Here we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+        st.write('For Product ID: 111708109, we see that max price was 186 when the optimal price could be 126.47 for maximum profit . this means the Product was loosing in profit. but if they had sold for 126 the sales may decrease, quantity been sold will decrease off course but profit will increase.')
+    
+        st.write('**Please note that all the products can be interpreted in an similar manner**')
     
         st.write('Now that we have these new price points for each items, once they are set up is important to continuously monitoring the sales and profits made out of these items.')
 
-    
+
+        st.write('**Elasticities interpretation**')
+        
+        st.write('A 10% price decrease in Product ID: 111708109 , it increases sales demand by 100.7% or a 10% price increase in Product ID: 111708109, it decreases sales demand by 100.7%')
+
+
     col1, col2, col3 = st.columns(3)
     # col1.metric("Temperature", "70 °F", "1.2 °F")
     # col2.metric("Wind", "9 mph", "-8%")
