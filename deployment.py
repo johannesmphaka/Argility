@@ -1,4 +1,4 @@
-from cgi import print_exception
+#from cgi import print_exception
 import streamlit as st
 import pandas as pd
 # from streamlit_option_menu import option_menu
